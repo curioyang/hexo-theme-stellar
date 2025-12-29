@@ -25,6 +25,9 @@ function layoutDiv() {
     arr = site.pages.filter(p => p.notebook).sort('-updated')
   } else if (page.notebook) {
     arr = site.pages.filter(p => p.notebook === page.notebook).sort('-updated')
+  } else if (page.topic?.length > 0) {
+    const topic = theme.topic.tree[page.topic]
+    arr = (topic?.pages || []).sort((p1, p2) => p1.updated > p2.updated ? -1 : 1)
   } else {
     arr = site.posts.filter( p => p.title && p.title.length > 0)
     arr = arr.sort("updated", -1)
