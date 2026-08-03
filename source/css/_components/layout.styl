@@ -1,10 +1,14 @@
 .l_body
   display: grid
-  grid-template-columns: 1fr minmax(200px,var(--width-main)) 1fr
+  // 左右栏按侧边栏固定宽度自适应，中间栏占满剩余空间
+  grid-template-columns: auto minmax(0, 1fr) auto
   grid-gap: calc(var(--gap-margin) * 4)
   @media screen and (max-width: $device-desktop)
     grid-gap: calc(var(--gap-margin) * 2)
   margin: auto
+  width: 100%
+  max-width: 100%
+  box-sizing: border-box
   font-size: var(--fsp)
 
 .l_body aside
@@ -15,6 +19,10 @@
   // 侧边栏容器宽度
   --width-sidebar: calc(var(--gap-margin) * 2 + var(--gap-padding) * 2 + var(--side-content-width))
   width: var(--width-sidebar)
+
+.l_body .l_main
+  min-width: 0
+  width: 100%
 
 .l_body .l_left
   justify-self: right
